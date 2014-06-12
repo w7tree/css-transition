@@ -1,0 +1,163 @@
+@import "compass"
+
++global-reset
+
+$gray: #aaa
+
+body
+  font-family: sans-serif
+  margin: 30px
+
+=defaultbox()
+  position: relative
+  background-color: #faa
+  width: 200px
+  padding: 20px
+  margin-bottom: 20px
+
+/* index.html */
+// {{{
+#no1
+  +defaultbox
+  transition: width 1s ease 0
+  &:hover
+    width: 400px
+
+#no1-1
+  +defaultbox
+  transition-property: width
+  transition-duration: 1s
+  transition-timing-function: ease
+  transition-delay: 0
+  &:hover
+    width: 400px
+
+#no2
+  +defaultbox
+  transition: background-color 1s ease 0
+  &:hover
+    background-color: darken(#faa,30%)
+
+#no3
+  margin-bottom: 20px
+  .zako
+    width: 160px
+    height: 160px
+    border: 1px solid $gray
+    background: url(images/zako-1.jpg) no-repeat 0 0
+    transition: background-image 1s ease 0
+    &:hover
+      background: url(images/zako-2.jpg) no-repeat 0 0
+
+#no4
+  +defaultbox
+  // left0の指定必須
+  left: 0px
+  transition: left 1s ease 0
+  &:hover
+    left: 50px
+
+#no5
+  +defaultbox
+  padding-left: 20px
+  transition: padding-left 1s ease 0,width 1s ease 0
+  &:hover
+    width: 170px
+    padding-left: 50px
+
+#no6
+  +defaultbox
+  transition: text-indent 0.5s ease 0
+  &:hover
+    text-indent: 30px
+
+#no7
+  +defaultbox
+  transition: letter-spacing 0.5s ease 0
+  &:hover
+    letter-spacing: 5px
+
+#no8
+  position: relative
+  margin-bottom: 50px
+  p[class^=pos]
+    position: absolute
+    font-size: 130%
+    font-weight: bold
+    top: 0px
+    left: 0px
+    transition: 0.5s ease 0
+  .pos1.active
+    top: -50px
+  .pos2.active
+    left: 50px
+  .pos3.active
+    top: 50px
+  .pos4.active
+    left: -50px
+
+#no9
+  font-size: 18px
+  transition: text-shadow 0.5s ease 0
+  &:hover
+    text-shadow: 0 40px #f00, 100px 0 #f00, 0 -40px #f00, -100px 0 #f00,100px 40px #f00, -100px 40px #f00, 100px -40px #f00, -100px -40px #f00
+
+// }}}
+
+/* index2.html */
+// {{{
+#no10
+  margin-bottom: 40px
+  background-color: #0af
+  font-size: 50px
+  width: 300px
+  padding: 50px
+  transition: 1s ease 0
+  &:hover
+    -webkit-transform: scale(3,3)
+
+#no11
+  background-color: #0af
+  font-size: 30px
+  width: 500px
+  padding: 100px
+  transition: 1s ease 0
+  &:hover
+    -webkit-transform: rotate(360deg)
+// }}}
+
+/* index.3.html */
+#index3
+  margin: 0
+  width: 1920px
+  height: 1080px
+  overflow: hidden
+  background-image: url(images/desktop/1.jpg)
+  pre
+    position: absolute
+    left: 50px
+    top: 420px
+    padding: 20px
+    background-color: #FFF
+    border: 1px solid $gray
+  @for $i from 1 through 3
+    #page#{$i}
+      position: absolute
+      top: 0
+      left: 0
+      width: 1920px
+      height: 1080px
+      background-image: url(images/desktop/#{$i}.jpg)
+      transition: 1s ease 0
+      -webkit-transform: scale(3,3)
+      opacity: 0
+      &.active
+        -webkit-transform: scale(1,1)
+        opacity: 1
+  #gnav
+    position: absolute
+    z-index: 10000
+    top: 50px
+    left: 50px
+
+
